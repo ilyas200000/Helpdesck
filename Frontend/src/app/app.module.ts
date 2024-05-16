@@ -9,7 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HttpInterceptor } from './authentification/_helpers/http.interceptor';
 import { HeaderComponent } from './shared_component/header/header.component';
-import { AccessDeniedComponent } from './errors/access-denied/access-denied.component';
+import { AccessDeniedComponent } from './shared_component/errors/access-denied/access-denied.component';
 import { AdminComponent } from './admin/admin.component';
 
 @NgModule({

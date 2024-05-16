@@ -296,3 +296,4 @@ C:\Users\130496\source\repos\HelpDesck\Service_Auth\bin\Debug\net6.0\Microsoft.O
 C:\Users\130496\source\repos\HelpDesck\Service_Auth\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\130496\source\repos\HelpDesck\Service_Auth\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\130496\source\repos\HelpDesck\Service_Auth\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\130496\source\repos\HelpDesck\Service_Auth\obj\Debug\net6.0\Service_Auth.sourcelink.json

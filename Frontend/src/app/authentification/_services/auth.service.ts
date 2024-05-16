@@ -9,12 +9,14 @@ import { environment } from 'environment';
 
 
 
+
 export interface AuthResponseData {
   access_token: string;
   expires_in: number;
   token_type: string;
   scope: string;
 }
+
 interface UserInfo {
   sub: string; 
   name: string;
@@ -34,7 +36,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    
   ) { }
 
   
@@ -52,9 +55,9 @@ export class AuthService {
       mergeMap(response => {
         if (response && response.access_token) {
           // Token retrieved, save it or perform further actions
-          const token = response.access_token;
-          // Example: Save token to localStorage
-          localStorage.setItem('access_token', token);
+           const token = response.access_token;
+           this.storageService.saveToken(token);
+          
         } else {
           // Handle missing token in response
           throw new Error('Access token not found in response');
@@ -79,6 +82,7 @@ export class AuthService {
         // Save user information or perform further actions
         this.storageService.saveUser(user);
         this.AuthenticatedUser$.next(user);
+      
       })
     );
   }
@@ -95,21 +99,39 @@ export class AuthService {
     this.AuthenticatedUser$.next(userData);
   }
 
-  logout(){
-    this.http.request('post','http://localhost:8086/api/v1/auth/logout',{
-      withCredentials: true
-    }).subscribe({
+  logout() {
+    const token = this.storageService.getToken(); // Retrieve the access token from storage
+    if (!token) {
+      // No token found, simply clean and navigate to login
+      this.storageService.clean();
+      this.AuthenticatedUser$.next(null);
+      this.router.navigate(['/login']);
+      return;
+    }
+  
+    // Set up headers with the access token
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    // Send a POST request to the logout endpoint with the access token
+    return this.http.post(`${environment.apiUrl}connect/endsession`, {}, { headers, withCredentials: true }).subscribe({
       next: () => {
+        // Clean storage and navigate to login upon successful logout
         this.storageService.clean();
         this.AuthenticatedUser$.next(null);
         this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.error('Logout error:', err);
+        // Handle error if needed
       }
-    })
-
+    });
   }
+  
 
   refreshToken(){
-    return this.http.request('post', 'http://localhost:8086/api/v1/auth/refresh-token-cookie', {
+    return this.http.request('post', `${environment.apiUrl}connect/revocation`, {
       withCredentials: true
     })
   }

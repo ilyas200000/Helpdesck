@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { environment } from 'environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserService {
 
 
   getUserPublicContent() {
-  return  this.http.request('post','http://localhost:8086/api/v1/user/resource', {
+  return  this.http.request('post',`${environment.apiUrl}connect/userinfo`, {
       withCredentials: true,
       responseType : "text"
     })

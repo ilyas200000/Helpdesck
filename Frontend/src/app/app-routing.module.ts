@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './authentification/login/login.component';
-import {HomeComponent} from "./shared_component/home/home.component";
+import { HomeComponent } from './shared_component/home/home.component';
 import { authGuard } from './authentification/_helpers/auth.guard';
-import {AccessDeniedComponent} from "./errors/access-denied/access-denied.component";
+import { AccessDeniedComponent } from './shared_component/errors/access-denied/access-denied.component';
 import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
