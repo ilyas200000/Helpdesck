@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "MPmJG6Ui0CUaYUGi4IkMLf6TwBAG1CaYepyb9dZISIc=",
+  "Source": "Service_Incidents",
+  "BasePath": "_content/Service_Incidents",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
