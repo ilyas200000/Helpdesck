@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
       next : user => {
         if(user) {
           this.showAdminBoard = user.role.includes('Admin');
-          console.log(user.role)
+          // console.log(user.role.includes('Admin'))
         }
       }
     })

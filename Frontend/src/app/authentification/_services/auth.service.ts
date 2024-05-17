@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, catchError, tap, throwError,mergeMap} from "rxjs";
-import {User} from "../_models/user.model";
-import {StorageService} from "./storage.service";
-import {Router} from "@angular/router";
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { BehaviorSubject, catchError, tap, throwError, mergeMap } from 'rxjs';
+import { User } from '../_models/user.model';
+import { StorageService } from './storage.service';
+import { Router } from '@angular/router';
 import { environment } from 'environment';
-
-
-
-
 
 export interface AuthResponseData {
   access_token: string;
@@ -18,30 +14,23 @@ export interface AuthResponseData {
 }
 
 interface UserInfo {
-  sub: string; 
+  sub: string;
   name: string;
   email: string;
-  role: string[]; 
+  role: string[];
 }
-
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  AuthenticatedUser$  = new BehaviorSubject<User | null>(null);
+  AuthenticatedUser$ = new BehaviorSubject<User | null>(null);
 
   constructor(
     private http: HttpClient,
     private storageService: StorageService,
-    private router: Router,
-    
+    private router: Router
   ) { }
-
-  
-
 
   login(username: string, password: string) {
     const requestBody = `grant_type=password&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
@@ -55,8 +44,8 @@ export class AuthService {
       mergeMap(response => {
         if (response && response.access_token) {
           // Token retrieved, save it or perform further actions
-           const token = response.access_token;
-           this.storageService.saveToken(token);
+          
+           this.storageService.saveAuthResponseData(response);
           
         } else {
           // Handle missing token in response
@@ -87,52 +76,49 @@ export class AuthService {
     );
   }
 
-  
-  
-  
-
   autoLogin() {
     const userData = this.storageService.getSavedUser();
-    if (!userData) {
-      return;
+    if (userData) {
+      this.AuthenticatedUser$.next(userData);
     }
-    this.AuthenticatedUser$.next(userData);
   }
 
-  logout() {
-    const token = this.storageService.getToken(); // Retrieve the access token from storage
+  logout(): void {
+    const token = this.storageService.getToken();
     if (!token) {
-      // No token found, simply clean and navigate to login
-      this.storageService.clean();
-      this.AuthenticatedUser$.next(null);
-      this.router.navigate(['/login']);
+      this.cleanAndNavigate();
       return;
     }
   
-    // Set up headers with the access token
+    // // Create the logout URL with any necessary query parameters
+     const logoutUrl = `${environment.apiUrl}connect/endsession?id_token_hint=${token}&post_logout_redirect_uri=${window.location.origin}/login`;
+  
+    // // Open the logout URL in a new window or tab
+     window.open(logoutUrl, '_blank');
+  
+    // Clean storage and navigate to login page
+    this.cleanAndNavigate();
+  }
+  
+  
+  
+
+  refreshToken(token: string | null) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-  
-    // Send a POST request to the logout endpoint with the access token
-    return this.http.post(`${environment.apiUrl}connect/endsession`, {}, { headers, withCredentials: true }).subscribe({
-      next: () => {
-        // Clean storage and navigate to login upon successful logout
-        this.storageService.clean();
-        this.AuthenticatedUser$.next(null);
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        console.error('Logout error:', err);
-        // Handle error if needed
-      }
-    });
-  }
-  
 
-  refreshToken(){
-    return this.http.request('post', `${environment.apiUrl}connect/revocation`, {
-      withCredentials: true
-    })
+    return this.http.post(`${environment.apiUrl}connect/revocation`, {}, { headers }).pipe(
+      catchError(err => {
+        console.error('Refresh token error:', err);
+        return throwError(() => new Error('Failed to refresh token'));
+      })
+    );
+  }
+
+  private cleanAndNavigate() {
+    this.storageService.clean();
+    this.AuthenticatedUser$.next(null);
+    this.router.navigate(['/login']);
   }
 }

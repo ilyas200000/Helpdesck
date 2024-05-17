@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Service_Incidents")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8bbdf7104b3bfe4d34aa059e9869f7c6d8de1138")]
 [assembly: System.Reflection.AssemblyProductAttribute("Service_Incidents")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Service_Incidents")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

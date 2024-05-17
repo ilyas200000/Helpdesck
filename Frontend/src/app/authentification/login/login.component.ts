@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit,OnDestroy{
   }
 
   ngOnInit() {
+    
     this.AuthUserSub = this.authService.AuthenticatedUser$.subscribe({
       next : user => {
         if(user) {

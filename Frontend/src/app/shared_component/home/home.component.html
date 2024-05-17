@@ -10,15 +10,11 @@
           <div *ngIf="user">
             <p>ID: {{user.sub}}</p>
             <p>Email: {{user.email}}</p>
-            <p>Role: </p>
-            <strong>Permissions:</strong>
-            <ul>
-              <li *ngFor="let p of user.role">
-                {{ p }}
-              </li>
-            </ul>
+            <p>Role: {{user.role}}</p>
+            
+            
           </div>
-          Message :<p>{{pubContent}}</p>
+         
         </div>
       </div>
     </div>

@@ -25,20 +25,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.AuthUserSub = this.authService.AuthenticatedUser$.subscribe({
       next: user => {
         if (user) {
-          // If user is authenticated, redirect to home page
-          this.router.navigate(['/home']);
+          this.user = user; // Assign the user value to the user property
         } else {
-          // Fetch public content only if user is not authenticated
-          this.userService.getUserPublicContent().subscribe({
-            next: data => {
-              this.pubContent = data;
-            },
-            error: err => console.log(err)
-          });
+          // User is not authenticated, navigate to login page
+          this.router.navigate(['/login']);
         }
       }
     });
   }
+  
 
 
   ngOnDestroy() {

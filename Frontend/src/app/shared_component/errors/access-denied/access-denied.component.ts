@@ -15,8 +15,8 @@ export class AccessDeniedComponent {
 
   goHome(): void {
     this.router.navigate(['/home']);
-    console.log(this.authService.AuthenticatedUser$)
-    // console.log(this.storageService.getToken())
+    // console.log(this.authService.AuthenticatedUser$)
+    //  console.log(this.storageService.getToken())
   }
 
   logout(): void {

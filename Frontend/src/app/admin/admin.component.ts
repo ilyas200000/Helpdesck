@@ -11,7 +11,7 @@ export class AdminComponent implements OnInit{
   constructor(private userService : UserService) {
   }
   ngOnInit(): void {
-    this.userService.getAdminPublicContent().subscribe({
+    this.userService.getUserPublicContent().subscribe({
       next : data => {
         this.adminPubContent = data;
       },

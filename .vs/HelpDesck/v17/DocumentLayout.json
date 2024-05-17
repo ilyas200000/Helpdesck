@@ -1,12 +1,69 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\130496\\source\\repos\\HelpDesck\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5A6067AB-D326-4062-9E01-31067A7E9BA0}|Service_Auth\\Service_Auth.csproj|c:\\users\\130496\\source\\repos\\helpdesck\\service_auth\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5A6067AB-D326-4062-9E01-31067A7E9BA0}|Service_Auth\\Service_Auth.csproj|solutionrelative:service_auth\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A6067AB-D326-4062-9E01-31067A7E9BA0}|Service_Auth\\Service_Auth.csproj|c:\\users\\130496\\source\\repos\\helpdesck\\service_auth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A6067AB-D326-4062-9E01-31067A7E9BA0}|Service_Auth\\Service_Auth.csproj|solutionrelative:service_auth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A6067AB-D326-4062-9E01-31067A7E9BA0}|Service_Auth\\Service_Auth.csproj|c:\\users\\130496\\source\\repos\\helpdesck\\service_auth\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A6067AB-D326-4062-9E01-31067A7E9BA0}|Service_Auth\\Service_Auth.csproj|solutionrelative:service_auth\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\130496\\source\\repos\\HelpDesck\\Service_Auth\\appsettings.json",
+              "RelativeDocumentMoniker": "Service_Auth\\appsettings.json",
+              "ToolTip": "C:\\Users\\130496\\source\\repos\\HelpDesck\\Service_Auth\\appsettings.json",
+              "RelativeToolTip": "Service_Auth\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-16T20:46:33.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\130496\\source\\repos\\HelpDesck\\Service_Auth\\Program.cs",
+              "RelativeDocumentMoniker": "Service_Auth\\Program.cs",
+              "ToolTip": "C:\\Users\\130496\\source\\repos\\HelpDesck\\Service_Auth\\Program.cs",
+              "RelativeToolTip": "Service_Auth\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T20:46:32.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\130496\\source\\repos\\HelpDesck\\Service_Auth\\Controller\\UserController.cs",
+              "RelativeDocumentMoniker": "Service_Auth\\Controller\\UserController.cs",
+              "ToolTip": "C:\\Users\\130496\\source\\repos\\HelpDesck\\Service_Auth\\Controller\\UserController.cs",
+              "RelativeToolTip": "Service_Auth\\Controller\\UserController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T20:45:13.751Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
